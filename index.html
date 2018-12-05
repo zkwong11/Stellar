@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+        <link rel="stylesheet" href="css/style.css">
+        <!-- <link rel="shortcut icon" type="image/png" href="img/favicon.png"> -->
+        
+        <title>Weather App</title>
+    </head>
+    <body>
+        <div class="container">
+    
+            <!-- <div class="content"> -->
+                <nav class="sidebar">
+                    <h1>Stellar</h1><hr>
+                    <ul class="settings">
+                        <li id="theme">Settings</li>
+                        <li id="units">
+                            <div class="celsius">Celsius</div>
+                            <div class="fahrenheit">Fahrenheit</div>
+                        </li>
+                        <li>Quickset My Location</li>
+                        <li>Machine Learning</li>
+                        <li>About</li>
+                    </ul>
+                </nav>
+                <main class="weather-info">
+                    <div class="header">Weather Information</div> 
+                    <div class="main-display">Location Settings
+                        <div class="user-location"></div>
+                        <form action="#" class="search">
+                            <input type="text" class="search__input" placeholder="Search location...">
+                            <button class="search__button">Search</button>
+                        </form><hr>
+                        <div class="general-info">General Forecast
+                            <div class="base-info">
+                                <div class="main-temp"></div>
+                                <div class="range-temp"></div>
+                                <div class="temp-desc"></div>
+                            </div>
+                            <div class="detailed-info">
+                                <div class="the-detailed-info"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="wrapper-2">
+                        
+
+                        <div class="header-2">Related News
+                            <i class="fas fa-chevron-circle-right"></i>
+                        </div>
+                        
+                        <a href="#" id="c-link0"><div class="card">
+                            <h4 class="c-header" id="c-header0">Card 1</h4>
+                            <p class="c-date" id="c-date0">Date</p>
+                            <p class="c-desc" id="c-desc0">Description goes here. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Necessitatibus, veniam mollitia expedita ab rerum magnam!</p>
+                            <!-- <img src="" alt="News Image" id="c-image0">    -->
+                        </div></a>
+                        <a href="#" id="c-link1"><div class="card">
+                            <h4 class="c-header" id="c-header1">Card 2</h4>
+                            <p class="c-date" id="c-date1">Date</p>
+                            <p class="c-desc" id="c-desc1">Description goes here. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Necessitatibus, veniam mollitia expedita ab rerum magnam!</p>
+                            <!-- <img src="" alt="News Image" id="c-image1"> -->
+                        </div></a>
+                        <a href="#" id="c-link2"><div class="card">
+                            <h4 class="c-header" id="c-header2">Card 3</h4>
+                            <p class="c-date" id="c-date2">Date</p>
+                            <p class="c-desc" id="c-desc2">Description goes here. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Necessitatibus, veniam mollitia expedita ab rerum magnam!</p>
+                            <!-- <img src="" alt="News Image" id="c-image2"> -->
+                        </div></a>
+                        <a href="#" id="c-link3"><div class="card">
+                            <h4 class="c-header" id="c-header3">Card 4</h4>
+                            <p class="c-date" id="c-date3">Date</p>
+                            <p class="c-desc" id="c-desc3">Description goes here. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Necessitatibus, veniam mollitia expedita ab rerum magnam!</p>
+                            <!-- <img src="" alt="News Image" id="c-image3"> -->
+                        </div></a>
+                    </div> 
+                </main>
+                <div class="rightbar">
+                    Powered by: <br><br>
+                    News API <br><br>
+                    Open-<br>Weather-<br>Map API 
+                </div>
+            <!-- </div> -->
+        </div>
+        <script src="./js/index.js"></script>
+    </body>
+</html>
