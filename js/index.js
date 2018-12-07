@@ -1,7 +1,8 @@
 // Fetch with Async/Await 
-async function getInfo(term="Malaysia") {
+async function getInfo(term="New York") {
+
     const apiKey = '39457d86f173699cf7ec19cea6cadbf3';
-    let uri = `http://api.openweathermap.org/data/2.5/weather?q=${term}&units=metric&APPID=${apiKey}`;
+    let uri = `https://api.openweathermap.org/data/2.5/weather?q=${term}&units=metric&APPID=${apiKey}`;
 
     let req = new Request(uri, {
         method: 'GET',
@@ -25,7 +26,8 @@ async function getInfo(term="Malaysia") {
 };
 getInfo();
 
-async function getNews(term = "Malaysia") {
+async function getNews(term = "New York") {
+
     let uri = `https://newsapi.org/v2/everything?q=${term}&apiKey=91c4711bc08247559575d5c6c3cd4dfa`;
 
     let req = new Request(uri, {
@@ -36,7 +38,7 @@ async function getNews(term = "Malaysia") {
     try {
         let response = await fetch(req);
         let dataNews = await response.json();
-        console.log(dataNews);
+        
         generalNews(dataNews);
         
     } catch(err) {
@@ -52,16 +54,23 @@ generalNews = (dataNews) => {
         let dateNews = dataNews.articles[i].publishedAt;
         let descNews = dataNews.articles[i].description;
         let linkNews = dataNews.articles[i].url;
-        // let imageNews = dataNews.articles[i].urlToImage;
+
         document.getElementById(`c-header${i}`).innerHTML = titleNews;
         document.getElementById(`c-date${i}`).innerHTML = "Published at: " + dateNews.slice(0,10);
         document.getElementById(`c-desc${i}`).innerHTML = descNews;
         document.getElementById(`c-link${i}`).href = linkNews;
-        // document.getElementById(`c-image${i}`).src = imageNews;
     };
 
     let i = 0;
-    document.querySelector(".fa-chevron-circle-right").addEventListener("click", function() {
+    let p = 2;
+    let pageNum = document.querySelector(".page-num");
+
+    document.querySelector(".fa-chevron-circle-right").addEventListener("click", function(n) {
+        // Pagination
+        pageNum.innerHTML = `P${p++}`;
+        if (p === 6) {p = 1};
+
+        // Scroll through news cards
         if(i>15){i = -1};
 
         i++;
@@ -107,8 +116,6 @@ generalNews = (dataNews) => {
         document.getElementById(`c-date3`).innerHTML = "Published at: " + dateNews.slice(0,10);
         document.getElementById(`c-desc3`).innerHTML = descNews;
         document.getElementById(`c-link3`).href = linkNews;
-
-        console.log(i);
     });
 };
 
@@ -142,14 +149,16 @@ generalInfo = (data) => {
 
 // Search Bar Functionality
 searchInfo = () => {
-    let term = "";
+    let loc = "";
 
     document.querySelector(".search").addEventListener("keyup", function(e) {
-        term = e.target.value;
+        loc = e.target.value;
     });
-    document.querySelector(".search__button").addEventListener("click", function(){
-        getInfo(term);
-        getNews(term);
+    document.querySelector(".search__button").addEventListener("click", function(e){
+        e.preventDefault();
+        getInfo(loc);
+        getNews(loc);
+        document.querySelector(".page-num").innerHTML = `P${p=1}`;
     });
 };
 searchInfo();
@@ -159,13 +168,11 @@ searchInfo();
 settingsConfig = (tempMain) => {
     // To Fahrenheit
     document.querySelector(".fahrenheit").addEventListener("click", function(){
-        FahrTempMain = `${((tempMain*1.8)+32)} &deg;F`;
+        FahrTempMain = `${((tempMain*1.8)+32).toFixed(2)} &deg;F`;
         document.querySelector(".main-temp").innerHTML = FahrTempMain;
     });
     // To Celsius
     document.querySelector(".celsius").addEventListener("click", function(){
         document.querySelector(".main-temp").innerHTML = tempMain + " &deg;C";
     });
-
 };
-
